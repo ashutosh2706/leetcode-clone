@@ -1,0 +1,56 @@
+import { BrowserRouter, Route, Routes } from "react-router-dom"
+import Error403 from "./pages/Error/Error403"
+import Error404 from "./pages/Error/Error404"
+import { useState } from "react"
+import { LoginContext } from "./contexts/loginContext"
+import { UserProfileData } from "./types/userProfile"
+import HomePage from "./pages/HomePage"
+import SignIn from "./pages/Auth/SignIn"
+import SignUp from "./pages/Auth/SignUp"
+import ResetPassword from "./pages/Auth/ResetPassword"
+import ProblemList from "./pages/ProblemList"
+import ProblemDetail from "./pages/ProblemDetail"
+import EditUserProfile from "./pages/User/EditUserProfile"
+import UserProfile from "./pages/User/UserProfile"
+
+function App() {
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [profileData, setProfileData] = useState<UserProfileData>({
+    // set these data in children component by fetching from api
+    username: "JohnDoe", 
+    email: "user@email.com",
+    avatarUrl: "avatar.png" 
+  });
+
+  return (
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={
+            <LoginContext.Provider value={{isLoggedIn, setIsLoggedIn, profileData, setProfileData}}>
+              <HomePage />
+            </LoginContext.Provider>
+          } />
+          <Route path="/signin" element={
+            <LoginContext.Provider value={{isLoggedIn, setIsLoggedIn, profileData, setProfileData}}>
+              <SignIn />
+            </LoginContext.Provider>
+          } />
+          <Route path="/problemset" element={
+            <LoginContext.Provider value={{isLoggedIn, setIsLoggedIn, profileData, setProfileData}}>
+              <ProblemList />
+            </LoginContext.Provider>
+          } />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
+          <Route path="/user/:username" element={<UserProfile />} />
+          <Route path="/problem/:problemId" element={<ProblemDetail />} />
+          <Route path="*" element={<Error404 />} />
+        </Routes>
+      </BrowserRouter>
+    </>
+  )
+}
+
+export default App
