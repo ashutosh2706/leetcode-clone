@@ -10,17 +10,15 @@ import SignUp from "./pages/Auth/SignUp"
 import ResetPassword from "./pages/Auth/ResetPassword"
 import ProblemList from "./pages/ProblemList"
 import ProblemDetail from "./pages/ProblemDetail"
-import EditUserProfile from "./pages/User/EditUserProfile"
 import UserProfile from "./pages/User/UserProfile"
 
 function App() {
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [profileData, setProfileData] = useState<UserProfileData>({
-    // set these data in children component by fetching from api
-    username: "JohnDoe", 
-    email: "user@email.com",
-    avatarUrl: "avatar.png" 
+    username: '',
+    email: '',
+    avatarUrl: ''
   });
 
   return (

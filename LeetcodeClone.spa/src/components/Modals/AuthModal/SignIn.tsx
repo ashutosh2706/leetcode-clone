@@ -15,7 +15,7 @@ export default function SignIn() {
         setProfileData({
             username: "John",
             email: "john@email",
-            avatarUrl: ""
+            avatarUrl: "avatar.png"
         })
         navigate("/");
     }

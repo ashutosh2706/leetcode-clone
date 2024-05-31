@@ -12,8 +12,6 @@ export default function Toolbar({ problemPage }: ToolbarProps) {
 
     const {isLoggedIn, profileData} = useContext(LoginContext);
 
-    console.log(profileData.avatarUrl);
-
     return (
         <>
             <nav className='relative flex h-[60px] w-full shrink-0 items-center px-10 bg-dark-layer-1 text-dark-gray-7'>

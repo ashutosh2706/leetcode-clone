@@ -32,7 +32,7 @@ export default function ProblemsTable() {
 
     const defaultColumns = [
 
-        columnHelper.accessor('id', {
+        columnHelper.accessor('pid', {
             cell: info => {
                 const problemId = info.getValue();
                 return (solvedProblems.includes(problemId) && <CircleCheckBig className="w-5 h-5 stroke-green-500" />)
@@ -157,7 +157,7 @@ export default function ProblemsTable() {
                                                                 if (cell.column.id === 'title') {
                                                                     // ensuring this code executes only when title is clicked
                                                                     const row = cell.row;
-                                                                    const problemId = row.getAllCells().find(cell => cell.column.id === 'id')?.getValue();
+                                                                    const problemId = row.getAllCells().find(cell => cell.column.id === 'pid')?.getValue();
                                                                     navigate("/problem/" + problemId);
                                                                 } else if (cell.column.id === 'videoId') {
                                                                     setVideoId(String(cell.getValue()));

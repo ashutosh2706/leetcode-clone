@@ -6,6 +6,9 @@ import { githubDark } from "@uiw/codemirror-theme-github"
 import { sublime } from "@uiw/codemirror-theme-sublime"
 import { tokyoNight } from "@uiw/codemirror-theme-tokyo-night"
 import { javascript } from "@codemirror/lang-javascript"
+import { cpp } from "@codemirror/lang-cpp"
+import { java } from "@codemirror/lang-java"
+import { python } from "@codemirror/lang-python"
 import { ChevronUp, ChevronDown } from "lucide-react";
 import { useEffect, useState } from "react";
 import EditorPrefs from "../../../types/editorPrefs";
@@ -18,14 +21,20 @@ export default function CodePlayground() {
     const EDITOR_PREFS = 'editor_prefs';
     /**/
 
-    const boilerPlate = `/**\n@param nums: number[]\n@param target: number\n@returns number[]\n**/\nfunction twoSum(nums, target) {\n    // Your code here\n}`
+    const boilerPlate = 
+`class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+    
+    }
+};`
     const [splitSize, setSplitSize] = useState([60, 40]);   // default split size
     const [isCollapsed, setIsCollapsed] = useState(false);
 
     const defaultEditorPrefs: EditorPrefs = {
         fontSize: 14,
         language: 'C++',
-        theme: 'sublime',
+        theme: 'vscodeDark',
     }
 
     const mapTheme: { [key: string]: typeof vscodeDark | typeof githubDark | typeof sublime | typeof tokyoNight } = {
@@ -35,12 +44,14 @@ export default function CodePlayground() {
         tokyoNight
     }
 
+    
+
     const [editorPrefs, setEditorPrefs] = useState<EditorPrefs>(() => {
         const storedEditorPrefs = localStorage.getItem(EDITOR_PREFS);
         return storedEditorPrefs ? JSON.parse(storedEditorPrefs) : defaultEditorPrefs;
     });
 
-    // save editor prefs to local storage
+
     useEffect(() => {
         localStorage.setItem(EDITOR_PREFS, JSON.stringify(editorPrefs));
     }, [editorPrefs]);
@@ -59,8 +70,8 @@ export default function CodePlayground() {
                     <CodeMirror
                         value={boilerPlate}
                         theme={mapTheme[editorPrefs.theme]}
-                        extensions={[javascript()]}
-                        style={{ fontSize: 14 }}
+                        extensions={[cpp(), java(), python(), javascript()]}
+                        style={{ fontSize: editorPrefs.fontSize }}
                     />
                 </div>
                 {/* Test Cases */}
@@ -105,13 +116,13 @@ export default function CodePlayground() {
 
                         <div className="font-semibold my-4">
                             <p className="font-medium text-sm mt-4 text-white">nums</p>
-                            <div className="w-full cursor-text rounded-lg border px-3 py-[10px] bg-dark-fill-3 border-transparent text-white mt-2">
+                            <div className="w-full cursor-text rounded-lg border px-3 py-[10px] bg-dark-fill-3 border-transparent text-white mt-2" contentEditable={true}>
                                 [2,7,11,15]
                             </div>
                         </div>
                         <div className="font-semibold my-4">
                             <p className="font-medium text-sm mt-4 text-white">target</p>
-                            <div className="w-full cursor-text rounded-lg border px-3 py-[10px] bg-dark-fill-3 border-transparent text-white mt-2">
+                            <div className="w-full cursor-text rounded-lg border px-3 py-[10px] bg-dark-fill-3 border-transparent text-white mt-2" contentEditable={true}>
                                 9
                             </div>
                         </div>
