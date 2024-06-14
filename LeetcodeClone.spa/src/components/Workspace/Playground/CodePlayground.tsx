@@ -116,13 +116,13 @@ public:
 
                         <div className="font-semibold my-4">
                             <p className="font-medium text-sm mt-4 text-white">nums</p>
-                            <div className="w-full cursor-text rounded-lg border px-3 py-[10px] bg-dark-fill-3 border-transparent text-white mt-2" contentEditable={true}>
+                            <div className="w-full cursor-text rounded-lg border px-3 py-[10px] bg-dark-fill-3 border-transparent text-white mt-2" contentEditable={false}>
                                 [2,7,11,15]
                             </div>
                         </div>
                         <div className="font-semibold my-4">
                             <p className="font-medium text-sm mt-4 text-white">target</p>
-                            <div className="w-full cursor-text rounded-lg border px-3 py-[10px] bg-dark-fill-3 border-transparent text-white mt-2" contentEditable={true}>
+                            <div className="w-full cursor-text rounded-lg border px-3 py-[10px] bg-dark-fill-3 border-transparent text-white mt-2" contentEditable={false}>
                                 9
                             </div>
                         </div>

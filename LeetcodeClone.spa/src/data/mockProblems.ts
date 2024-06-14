@@ -9,17 +9,17 @@ export const mockProblems: Problem[] = [
 		order: 1,
 		videoId: "",
 		constraints: [
-			`<code className="text-sm">2 ≤ nums.length ≤ 10^4</code>`,
-			`<code className="text-sm">-10^9 ≤ nums[i] ≤ 10^9</code>`,
-			`<code className="text-sm">-10^9 ≤ target ≤ 10^9</code>`,
-			`<span className="text-sm">Only one valid answer exists.</span>`
+			`\\(2 \\leqslant nums.length \\leqslant 10^{4}\\)`,
+			`\\(-10^{9} \\leqslant nums[i] \\leqslant 10^{9}\\)`,
+			`\\(-10^{9} \\leqslant target \\leqslant 10^{9}\\)`,
+			`Only one valid answer exists.`
 		],
 		description: [
 			`Given an array of integers <code>nums</code> and an integer <code>target</code>, return&nbsp;
-			<em>indices of the two numbers such that they add up to</em> <code>target</code>. Ignore this, just added to check wrapping of long problem statements!! Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis alias similique dolor quia explicabo soluta`
+			<em>indices of the two numbers such that they add up to</em> <code>target</code>.`
 			,
 			`You may assume that each input would have <strong>exactly one solution</strong>, and you
-			may not use the same element twice.Ignore this, just added to check wrapping of long problem statements!! Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis alias similique dolor quia explicabo soluta`	
+			may not use the same element twice.`	
 			,
 			`You can return the answer in any order.`	
 		],

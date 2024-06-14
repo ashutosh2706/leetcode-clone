@@ -21,3 +21,5 @@ export interface Problem {
 // many to many mapping.. one user can solve multiple problems and each problem can
 // be solved by many users      junction table for userId <-> problemId
 // category id and category Name in separate table
+// verdict id and name in new table
+// difficulty id and name in new table

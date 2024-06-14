@@ -28,6 +28,7 @@ export default {
 				"dark-pink": "rgb(255 55 95)",
 				"olive": "rgb(0, 184, 163)",
 				"dark-green-s": "rgb(44 187 93)",
+				"dark-green-transparent": "rgba(41,59,47,255)",
 				"dark-blue-s": "rgb(10 132 255)",
 			}
     },

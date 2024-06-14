@@ -3,6 +3,7 @@ import { Tooltip } from "antd"
 import { useContext } from "react"
 import { ProblemContext } from "../../../contexts/problemContext"
 import ProblemInfo from "../../../types/problemInfo"
+import { MathJax } from 'better-react-mathjax'
 
 
 
@@ -69,14 +70,14 @@ export default function Description() {
                         <div>
                             {problemInfo.examples.map((example, index) => (
                                 <div key={index}>
-                                    <p className='font-medium text-white '>Example {index+1}: </p>
+                                    <p className='font-medium text-white '>Example {index + 1}: </p>
                                     <div className='example-card w-full'>
                                         <pre>
                                             <strong className='text-white'>Input: </strong>
-                                            <span dangerouslySetInnerHTML={{__html: example.input}}></span>
+                                            <span dangerouslySetInnerHTML={{ __html: example.input }}></span>
                                             <br />
-                                            <strong>Output:</strong><span dangerouslySetInnerHTML={{__html: example.output}}></span><br />
-                                            {example.explanation && <span><strong>Explanation:</strong><span dangerouslySetInnerHTML={{__html: example.explanation ?? ''}}></span></span>}
+                                            <strong>Output:</strong><span dangerouslySetInnerHTML={{ __html: example.output }}></span><br />
+                                            {example.explanation && <span><strong>Explanation:</strong><span dangerouslySetInnerHTML={{ __html: example.explanation ?? '' }}></span></span>}
                                         </pre>
                                     </div>
                                 </div>
@@ -90,13 +91,27 @@ export default function Description() {
                         <div className='text-white text-sm font-medium'>Constraints:</div>
                         <ul className='text-white ml-5 list-disc'>
                             {problemInfo.constraints.map((constraint, index) => (
-                                <li className='mt-2' key={index} dangerouslySetInnerHTML={{__html: constraint}}>
+                                <li className='mt-2' key={index}>
+                                    <MathJax>
+                                        <span className="text-sm" style={{
+                                            fontWeight: '500',
+                                            lineHeight: '1rem',
+                                            padding: '0.125rem',
+                                            color: 'rgba(239, 241, 246, 0.75)',
+                                            borderRadius: '5px',
+                                            backgroundColor: 'hsla(0, 0%, 100%, 0.07)',
+                                            borderColor: 'rgba(247, 250, 255, 0.12)',
+                                            borderWidth: '1px',
+                                            fontFamily: 'sans-serif',}}>
+                                            {constraint}
+                                            </span>
+                                    </MathJax>
                                 </li>
                             ))}
                         </ul>
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }

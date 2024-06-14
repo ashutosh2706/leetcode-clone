@@ -10,7 +10,8 @@ import SignUp from "./pages/Auth/SignUp"
 import ResetPassword from "./pages/Auth/ResetPassword"
 import ProblemList from "./pages/ProblemList"
 import ProblemDetail from "./pages/ProblemDetail"
-import UserProfile from "./pages/User/UserProfile"
+import UserDashboard from "./pages/User/UserDashboard"
+import EditUserProfile from "./pages/User/EditUserProfile"
 
 function App() {
 
@@ -26,23 +27,32 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={
-            <LoginContext.Provider value={{isLoggedIn, setIsLoggedIn, profileData, setProfileData}}>
+            <LoginContext.Provider value={{ isLoggedIn, setIsLoggedIn, profileData, setProfileData }}>
               <HomePage />
             </LoginContext.Provider>
           } />
           <Route path="/signin" element={
-            <LoginContext.Provider value={{isLoggedIn, setIsLoggedIn, profileData, setProfileData}}>
+            <LoginContext.Provider value={{ isLoggedIn, setIsLoggedIn, profileData, setProfileData }}>
               <SignIn />
             </LoginContext.Provider>
           } />
           <Route path="/problemset" element={
-            <LoginContext.Provider value={{isLoggedIn, setIsLoggedIn, profileData, setProfileData}}>
+            <LoginContext.Provider value={{ isLoggedIn, setIsLoggedIn, profileData, setProfileData }}>
               <ProblemList />
             </LoginContext.Provider>
           } />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/reset-password" element={<ResetPassword />} />
-          <Route path="/user/:username" element={<UserProfile />} />
+          <Route path="/user/:username" element={
+            <LoginContext.Provider value={{ isLoggedIn, setIsLoggedIn, profileData, setProfileData }}>
+              <UserDashboard />
+            </LoginContext.Provider>
+          } />
+          <Route path="/user/:username/edit-profile" element={
+            <LoginContext.Provider value={{ isLoggedIn, setIsLoggedIn, profileData, setProfileData }}>
+              <EditUserProfile />
+            </LoginContext.Provider>
+          } />
           <Route path="/problem/:problemId" element={<ProblemDetail />} />
           <Route path="*" element={<Error404 />} />
         </Routes>

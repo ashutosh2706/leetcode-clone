@@ -3,5 +3,6 @@ export default interface Submission {
     pid: string;
     userId: number;
     timeStamp: string;    
-    accepted: boolean;
+    verdict: string;
+    submittedCode: string;
 }
